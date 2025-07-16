@@ -1,8 +1,18 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const toggleBtn = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.navbar ul');
-
-    toggleBtn.addEventListener('click', () => {
-        navLinks.classList.toggle('show');
-    });
+document.getElementById('menu-toggle').addEventListener('click', function () {
+    document.querySelector('.navbar ul').classList.toggle('show');
 });
+
+const topBtn = document.getElementById("topBtn");
+
+window.onscroll = function () {
+    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
+    }
+};
+
+topBtn.onclick = function () {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+};

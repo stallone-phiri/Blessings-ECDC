@@ -7,9 +7,9 @@
 
 body {
     font-family: 'Nunito', sans-serif;
-    line-height: 1.6;
     background-color: #f9f9f9;
     color: #333;
+    line-height: 1.6;
 }
 
 .container {
@@ -18,10 +18,8 @@ body {
     margin: auto;
 }
 
-/* Header */
 header {
     background-color: #4CAF50;
-    color: #fff;
     padding: 20px 0;
     position: sticky;
     top: 0;
@@ -47,7 +45,7 @@ header .container {
 .navbar a {
     color: white;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: bold;
     transition: color 0.3s;
 }
 
@@ -55,25 +53,60 @@ header .container {
     color: #d4f8d4;
 }
 
-/* Hero Section */
-.hero-section {
-    background: url('images/hero-bg.jpg') no-repeat center center/cover;
-    padding: 100px 20px;
-    text-align: center;
+.menu-toggle {
+    display: none;
+    font-size: 28px;
     color: white;
-    background-color: #4CAF50;
+    cursor: pointer;
+}
+
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.hero-section video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-text {
+    position: relative;
+    z-index: 2;
+    padding: 0 20px;
 }
 
 .hero-text h1 {
-    font-size: 2.5rem;
-    margin-bottom: 10px;
+    font-size: 2rem;
 }
 
 .hero-text p {
     font-size: 1.2rem;
+    margin-top: 10px;
 }
 
-/* Section Titles */
 section h2 {
     text-align: center;
     margin: 40px 0 20px;
@@ -81,7 +114,6 @@ section h2 {
     color: #333;
 }
 
-/* About Section */
 #about p {
     text-align: center;
     max-width: 800px;
@@ -89,7 +121,6 @@ section h2 {
     padding-bottom: 40px;
 }
 
-/* Gallery Section */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -101,9 +132,13 @@ section h2 {
     width: 100%;
     height: auto;
     border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
-/* Contact Section */
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
 form {
     display: flex;
     flex-direction: column;
@@ -113,57 +148,67 @@ form {
     padding-bottom: 40px;
 }
 
-form input,
-form textarea {
+form input, form textarea {
     padding: 12px;
+    font-size: 16px;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 8px;
 }
 
 form button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 12px;
-    border-radius: 5px;
+    padding: 14px;
+    font-size: 16px;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: bold;
 }
 
 form button:hover {
     background-color: #45a049;
 }
 
-/* Footer */
 footer {
     background-color: #333;
-    color: #fff;
+    color: white;
     text-align: center;
     padding: 20px 0;
 }
 
-/* Responsive Nav */
+#topBtn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 18px;
+    display: none;
+    cursor: pointer;
+}
+
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
     .navbar ul {
         flex-direction: column;
-        background: #4CAF50;
         display: none;
+        background-color: #4CAF50;
+        width: 100%;
+        padding: 10px 0;
         position: absolute;
         top: 80px;
         right: 0;
-        width: 100%;
         text-align: center;
-        padding: 10px 0;
     }
 
     .navbar ul.show {
         display: flex;
-    }
-
-    .menu-toggle {
-        display: block;
-        cursor: pointer;
-        font-size: 24px;
-        color: white;
     }
 }
